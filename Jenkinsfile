@@ -10,11 +10,11 @@ pipeline {
  
     stage('Test') {
       parallel {
-        stage('Static code analysis') {
-            steps { sh 'npm run-script lint' }
-        }
+        // stage('Static code analysis') {
+        //     steps { sh 'npm run-script lint' }
+        // }
         stage('Unit tests') {
-            steps { sh 'npm run-script test' }
+            steps { sh 'npm run-script test -- --no-watch --no-progress --browsers=ChromeHeadlessCI' }
         }
       }
     }
